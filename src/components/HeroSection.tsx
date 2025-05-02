@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, YoutubeIcon, FileText, Users } from 'lucide-react';
+import { ArrowRight, FileText, Users, Instagram } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -61,8 +61,8 @@ const HeroSection: React.FC = () => {
             className="bg-cyber-purple hover:bg-opacity-90 text-white px-8 py-6 text-lg rounded-md flex items-center gap-2 glow" 
             onClick={() => window.open('https://instagram.com/cyber.slide', '_blank')}
           >
-            <YoutubeIcon size={20} />
-            Watch Our Content
+            <Instagram size={20} />
+            Follow on Instagram
           </Button>
           
           <Button 
@@ -76,10 +76,10 @@ const HeroSection: React.FC = () => {
           <Button 
             variant="outline" 
             className="border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:bg-opacity-10 px-8 py-6 text-lg rounded-md flex items-center gap-2"
-            onClick={() => window.open('https://pdfhost.io/v/N5EtSpV8M7_HackToTheFuture_-_A_Complete_Ethical_Hacking_Roadmap', '_blank')}
+            onClick={() => window.open('https://gamma.app/docs/The-Future-of-Cybersecurity-Education-xk33dvm3hswr6ft', '_blank')}
           >
             <FileText size={20} />
-            Get the PDF: Beginner's Ethical Hacking Toolkit
+            View Investor Deck
           </Button>
         </div>
       </div>

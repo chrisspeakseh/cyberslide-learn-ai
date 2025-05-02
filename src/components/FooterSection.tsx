@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Separator } from "@/components/ui/separator";
-import { Mail, Instagram, YoutubeIcon } from 'lucide-react';
+import { Mail, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const FooterSection: React.FC = () => {
   return (
@@ -24,12 +25,8 @@ const FooterSection: React.FC = () => {
                 <Mail size={20} />
               </a>
               
-              <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-cyber-blue bg-opacity-20 flex items-center justify-center text-cyber-cyan hover:bg-opacity-30 transition-colors">
+              <a href="https://instagram.com/cyber.slide" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-cyber-blue bg-opacity-20 flex items-center justify-center text-cyber-cyan hover:bg-opacity-30 transition-colors">
                 <Instagram size={20} />
-              </a>
-              
-              <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-cyber-blue bg-opacity-20 flex items-center justify-center text-cyber-cyan hover:bg-opacity-30 transition-colors">
-                <YoutubeIcon size={20} />
               </a>
             </div>
           </div>
@@ -50,7 +47,7 @@ const FooterSection: React.FC = () => {
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-cyber-cyan transition-colors">Documentation</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-cyber-cyan transition-colors">Downloads</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-cyber-cyan transition-colors">Videos</a></li>
+                <li><a href="https://gamma.app/docs/The-Future-of-Cybersecurity-Education-xk33dvm3hswr6ft" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyber-cyan transition-colors">Investor Deck</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-cyber-cyan transition-colors">Blog</a></li>
               </ul>
             </div>
@@ -61,7 +58,7 @@ const FooterSection: React.FC = () => {
                 <li><a href="#" className="text-gray-400 hover:text-cyber-cyan transition-colors">About</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-cyber-cyan transition-colors">Team</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-cyber-cyan transition-colors">Careers</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-cyber-cyan transition-colors">Contact</a></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-cyber-cyan transition-colors">Contact</Link></li>
               </ul>
             </div>
           </div>
@@ -75,9 +72,9 @@ const FooterSection: React.FC = () => {
           </div>
           
           <div className="flex gap-6">
-            <a href="#" className="text-gray-400 hover:text-cyber-cyan text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-cyber-cyan text-sm transition-colors">Terms of Service</a>
-            <a href="#" className="text-gray-400 hover:text-cyber-cyan text-sm transition-colors">Cookies</a>
+            <Link to="/privacy" className="text-gray-400 hover:text-cyber-cyan text-sm transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-gray-400 hover:text-cyber-cyan text-sm transition-colors">Terms of Service</Link>
+            <Link to="/cookies" className="text-gray-400 hover:text-cyber-cyan text-sm transition-colors">Cookies</Link>
           </div>
         </div>
         
