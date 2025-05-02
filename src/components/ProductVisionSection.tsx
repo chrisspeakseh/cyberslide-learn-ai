@@ -76,7 +76,7 @@ const ProductVisionSection: React.FC = () => {
               <TechStackItem 
                 icon={<Bot className="text-cyber-purple" />}
                 title="Vertex AI"
-                description="Enabling users to ask and answer hacking-related queries interactively"
+                description="Enabling users to ask and answer cybersecurity-related queries interactively"
               />
             </div>
           </div>
