@@ -1,11 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   // Handle scroll effect
   useEffect(() => {
@@ -23,7 +26,12 @@ const Navbar: React.FC = () => {
 
   const scrollToSection = (id: string) => {
     setIsMobileMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    if (isHomePage) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // If on other pages, navigate to homepage first and then scroll
+      window.location.href = '/#' + id;
+    }
   };
 
   return (
@@ -36,30 +44,59 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center">
+        <Link to="/" className="flex items-center">
           <div className="w-10 h-10 mr-3 rounded-lg bg-gradient-to-br from-cyber-cyan to-cyber-purple flex items-center justify-center">
             <span className="text-white font-bold text-xl">C</span>
           </div>
           <span className="text-xl font-bold">Cyber<span className="gradient-text">slide</span></span>
-        </div>
+        </Link>
         
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <NavLink label="Home" onClick={() => scrollToSection('hero')} />
-          <NavLink label="About" onClick={() => scrollToSection('about')} />
-          <NavLink label="Traction" onClick={() => scrollToSection('traction')} />
-          <NavLink label="Vision" onClick={() => scrollToSection('vision')} />
-          <NavLink label="Founder" onClick={() => scrollToSection('founder')} />
+          {!isHomePage && (
+            <NavLink label="Home" onClick={() => window.location.href = '/'} />
+          )}
+
+          {isHomePage ? (
+            <>
+              <NavLink label="About" onClick={() => scrollToSection('about')} />
+              <NavLink label="Traction" onClick={() => scrollToSection('traction')} />
+              <NavLink label="Vision" onClick={() => scrollToSection('vision')} />
+              <NavLink label="Founder" onClick={() => scrollToSection('founder')} />
+            </>
+          ) : (
+            <>
+              <Link to="/contact" className="text-gray-200 hover:text-cyber-cyan transition-colors font-medium">
+                Contact
+              </Link>
+              <Link to="/privacy" className="text-gray-200 hover:text-cyber-cyan transition-colors font-medium">
+                Privacy
+              </Link>
+              <Link to="/terms" className="text-gray-200 hover:text-cyber-cyan transition-colors font-medium">
+                Terms
+              </Link>
+            </>
+          )}
         </nav>
         
         {/* CTA button */}
         <div className="hidden md:block">
-          <Button 
-            className="bg-cyber-cyan hover:bg-opacity-80 text-cyber-dark"
-            onClick={() => scrollToSection('cta')}
-          >
-            Join Waitlist
-          </Button>
+          {isHomePage ? (
+            <Button 
+              className="bg-cyber-cyan hover:bg-opacity-80 text-cyber-dark"
+              onClick={() => scrollToSection('cta')}
+            >
+              Join Waitlist
+            </Button>
+          ) : (
+            <Link to="/">
+              <Button 
+                className="bg-cyber-cyan hover:bg-opacity-80 text-cyber-dark"
+              >
+                <Home size={18} className="mr-2" /> Back to Home
+              </Button>
+            </Link>
+          )}
         </div>
         
         {/* Mobile menu button */}
@@ -76,17 +113,47 @@ const Navbar: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-cyber-dark bg-opacity-95 backdrop-blur-md">
           <nav className="flex flex-col px-6 py-4 space-y-3">
-            <MobileNavLink label="Home" onClick={() => scrollToSection('hero')} />
-            <MobileNavLink label="About" onClick={() => scrollToSection('about')} />
-            <MobileNavLink label="Traction" onClick={() => scrollToSection('traction')} />
-            <MobileNavLink label="Vision" onClick={() => scrollToSection('vision')} />
-            <MobileNavLink label="Founder" onClick={() => scrollToSection('founder')} />
-            <Button 
-              className="bg-cyber-cyan hover:bg-opacity-80 text-cyber-dark w-full mt-3"
-              onClick={() => scrollToSection('cta')}
-            >
-              Join Waitlist
-            </Button>
+            {!isHomePage && (
+              <MobileNavLink label="Home" onClick={() => window.location.href = '/'} />
+            )}
+
+            {isHomePage ? (
+              <>
+                <MobileNavLink label="About" onClick={() => scrollToSection('about')} />
+                <MobileNavLink label="Traction" onClick={() => scrollToSection('traction')} />
+                <MobileNavLink label="Vision" onClick={() => scrollToSection('vision')} />
+                <MobileNavLink label="Founder" onClick={() => scrollToSection('founder')} />
+              </>
+            ) : (
+              <>
+                <Link to="/contact" className="text-gray-200 hover:text-cyber-cyan transition-colors font-medium py-2 w-full text-left">
+                  Contact
+                </Link>
+                <Link to="/privacy" className="text-gray-200 hover:text-cyber-cyan transition-colors font-medium py-2 w-full text-left">
+                  Privacy
+                </Link>
+                <Link to="/terms" className="text-gray-200 hover:text-cyber-cyan transition-colors font-medium py-2 w-full text-left">
+                  Terms
+                </Link>
+              </>
+            )}
+            
+            {isHomePage ? (
+              <Button 
+                className="bg-cyber-cyan hover:bg-opacity-80 text-cyber-dark w-full mt-3"
+                onClick={() => scrollToSection('cta')}
+              >
+                Join Waitlist
+              </Button>
+            ) : (
+              <Link to="/" className="w-full">
+                <Button 
+                  className="bg-cyber-cyan hover:bg-opacity-80 text-cyber-dark w-full mt-3"
+                >
+                  <Home size={18} className="mr-2" /> Back to Home
+                </Button>
+              </Link>
+            )}
           </nav>
         </div>
       )}

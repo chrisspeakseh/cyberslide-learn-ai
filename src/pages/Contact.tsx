@@ -5,7 +5,7 @@ import FooterSection from '@/components/FooterSection';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Instagram } from 'lucide-react';
 import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {

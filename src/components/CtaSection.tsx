@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Users, FileText, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Add type declaration for the window object to include our custom function
 declare global {
@@ -90,15 +91,21 @@ const CtaSection: React.FC = () => {
               Join the Waitlist
             </Button>
             
-            <Button variant="outline" className="border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:bg-opacity-10 px-8 py-6 text-lg rounded-md flex items-center gap-2">
+            <Button 
+              variant="outline" 
+              className="border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:bg-opacity-10 px-8 py-6 text-lg rounded-md flex items-center gap-2"
+              onClick={() => window.open('https://gamma.app/docs/The-Future-of-Cybersecurity-Education-xk33dvm3hswr6ft', '_blank')}
+            >
               <FileText size={20} />
               Download Our Investor Deck
             </Button>
             
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:bg-opacity-10 px-8 py-6 text-lg rounded-md flex items-center gap-2">
-              <Mail size={20} />
-              Contact Us
-            </Button>
+            <Link to="/contact">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:bg-opacity-10 px-8 py-6 text-lg rounded-md flex items-center gap-2">
+                <Mail size={20} />
+                Contact Us
+              </Button>
+            </Link>
           </div>
           
           {/* Email signup form */}
