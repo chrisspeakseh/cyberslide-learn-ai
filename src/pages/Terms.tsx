@@ -77,7 +77,7 @@ const Terms = () => {
             <section className="mb-8">
               <h2 className="text-xl font-semibold mb-4">8. Governing Law</h2>
               <p className="text-gray-300">
-                These terms and conditions are governed by and construed in accordance with the laws of the United States and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
+                These terms and conditions are governed by and construed in accordance with the laws of Singapore and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
               </p>
             </section>
           </div>
