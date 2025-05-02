@@ -70,7 +70,7 @@ const FounderSection: React.FC = () => {
             <h3 className="text-2xl font-bold mb-4">Christus Vincent</h3>
             <p className="text-lg text-gray-300 mb-6">
               A cybersecurity blogger and educator passionate about making hacking education accessible. 
-              With over 8 years of experience in cybersecurity, Christus founded Cyberslide to break down 
+              With years of practical experience in cybersecurity, Christus founded Cyberslide to break down 
               complex security concepts into digestible, engaging content for beginners and professionals alike.
             </p>
             
