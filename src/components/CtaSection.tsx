@@ -1,7 +1,13 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Users, FileText, Mail } from 'lucide-react';
+
+// Add type declaration for the window object to include our custom function
+declare global {
+  interface Window {
+    ml_webform_success_25490861: () => void;
+  }
+}
 
 const CtaSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
