@@ -30,6 +30,10 @@ const HeroSection: React.FC = () => {
     };
   }, []);
 
+  const scrollToForm = () => {
+    document.getElementById('newsletter-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div ref={heroRef} className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 md:px-10 py-20 overflow-hidden">
       {/* Background gradient element */}
@@ -61,7 +65,10 @@ const HeroSection: React.FC = () => {
             Watch Our Content
           </Button>
           
-          <Button className="bg-cyber-cyan hover:bg-opacity-90 text-cyber-dark font-medium px-8 py-6 text-lg rounded-md flex items-center gap-2 glow">
+          <Button 
+            className="bg-cyber-cyan hover:bg-opacity-90 text-cyber-dark font-medium px-8 py-6 text-lg rounded-md flex items-center gap-2 glow"
+            onClick={scrollToForm}
+          >
             <Users size={20} />
             Join Our Waitlist
           </Button>

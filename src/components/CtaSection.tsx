@@ -29,6 +29,41 @@ const CtaSection: React.FC = () => {
     };
   }, []);
 
+  // Load MailerLite scripts dynamically
+  useEffect(() => {
+    // Add Mailerlite CSS
+    const linkElement = document.createElement('link');
+    linkElement.rel = 'stylesheet';
+    linkElement.href = 'https://assets.mlcdn.com/fonts.css?version=1746091';
+    document.head.appendChild(linkElement);
+    
+    // Add Mailerlite JS
+    const script = document.createElement('script');
+    script.src = 'https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024';
+    script.async = true;
+    document.body.appendChild(script);
+
+    // Add success handler
+    window.ml_webform_success_25490861 = function() {
+      const rowSuccess = document.querySelector('.ml-subscribe-form-25490861 .row-success');
+      const rowForm = document.querySelector('.ml-subscribe-form-25490861 .row-form');
+      
+      if (rowSuccess) rowSuccess.setAttribute('style', 'display: block');
+      if (rowForm) rowForm.setAttribute('style', 'display: none');
+    };
+
+    // Fetch form data
+    setTimeout(() => {
+      fetch("https://assets.mailerlite.com/jsonp/1341251/forms/153259226605553075/takel")
+        .catch(e => console.log('Form fetch error:', e));
+    }, 1000);
+
+    return () => {
+      document.head.removeChild(linkElement);
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <section ref={sectionRef} id="cta" className="py-20 px-6 md:px-10 relative">
       {/* Background with gradient */}
@@ -61,18 +96,55 @@ const CtaSection: React.FC = () => {
           </div>
           
           {/* Email signup form */}
-          <div className="mt-12 max-w-md mx-auto">
+          <div id="newsletter-form" className="mt-12 max-w-md mx-auto">
             <div className="bg-cyber-dark bg-opacity-50 p-6 rounded-lg">
-              <h3 className="text-lg font-medium mb-4">Subscribe to our newsletter</h3>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="flex-grow px-4 py-2 bg-cyber-dark border border-cyber-gray rounded-md focus:outline-none focus:border-cyber-cyan"
-                />
-                <Button className="bg-cyber-purple hover:bg-opacity-90 text-white">
-                  Subscribe
-                </Button>
+              {/* MailerLite Form Integration */}
+              <div id="mlb2-25490861" className="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-25490861">
+                <div className="ml-form-align-center">
+                  <div className="ml-form-embedWrapper embedForm">
+                    <div className="ml-form-embedBody ml-form-embedBodyHorizontal row-form">
+                      <div className="ml-form-embedContent">
+                        <h3 className="text-lg font-medium mb-4">Enter your email below to join the waitlist</h3>
+                        <p className="text-xs text-cyber-cyan font-medium">To our Exclusive Resources, Tools & our Cybersecurity Insiders community</p>
+                      </div>
+                      <form 
+                        className="ml-block-form flex flex-col sm:flex-row gap-3" 
+                        action="https://assets.mailerlite.com/jsonp/1341251/forms/153259226605553075/subscribe" 
+                        data-code="" 
+                        method="post" 
+                        target="_blank"
+                      >
+                        <div className="ml-form-formContent w-full">
+                          <div className="ml-form-fieldRow">
+                            <div className="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                              <input 
+                                type="email" 
+                                name="fields[email]" 
+                                placeholder="Enter your email" 
+                                className="flex-grow px-4 py-2 bg-cyber-dark border border-cyber-gray rounded-md focus:outline-none focus:border-cyber-cyan w-full"
+                                autoComplete="email"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <input type="hidden" name="ml-submit" value="1" />
+                        <Button 
+                          type="submit" 
+                          className="bg-cyber-purple hover:bg-opacity-90 text-white px-6 py-2 rounded-md"
+                        >
+                          Subscribe
+                        </Button>
+                        <input type="hidden" name="anticsrf" value="true" />
+                      </form>
+                    </div>
+                    <div className="ml-form-successBody row-success" style={{ display: 'none' }}>
+                      <div className="ml-form-successContent">
+                        <h4 className="text-lg font-medium mb-3">Thank you!</h4>
+                        <p className="text-cyber-cyan font-medium">You have successfully joined insiders list, wait for instructions in email. Thanks</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <p className="text-xs text-gray-400 mt-3">
                 We'll never share your email. Unsubscribe anytime.
