@@ -46,11 +46,11 @@ const FounderSection: React.FC = () => {
           <div className="lg:w-2/5">
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-cyber-cyan glow relative mx-auto">
-                {/* Replace with actual founder image */}
-                <div className="w-full h-full bg-gradient-to-br from-cyber-blue to-cyber-purple opacity-50"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Shield size={80} className="text-white opacity-30" />
-                </div>
+                <img 
+                  src="/lovable-uploads/4a94e445-7fa6-4338-aee9-2a131b1b0021.png" 
+                  alt="Christus Vincent - Founder of Cyberslide" 
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-cyber-dark to-transparent py-6 px-4">
                   <p className="font-semibold text-center text-white">Christus Vincent</p>
                 </div>

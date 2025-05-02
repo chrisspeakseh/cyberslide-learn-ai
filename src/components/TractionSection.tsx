@@ -93,7 +93,7 @@ const TractionSection: React.FC = () => {
         <div className={`stats-grid ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-1000 ease-out`}>
           <StatCard 
             icon={<Users className="text-cyber-cyan" size={28} />}
-            value={<Counter end={60000} suffix="+" isVisible={isVisible} />}
+            value={<Counter end={74000} suffix="+" isVisible={isVisible} />}
             label="Followers across Instagram & YouTube"
           />
           

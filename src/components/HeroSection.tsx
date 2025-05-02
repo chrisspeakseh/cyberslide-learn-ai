@@ -49,11 +49,14 @@ const HeroSection: React.FC = () => {
         </h1>
         
         <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-          Cyberslide is building the most engaging short-form cybersecurity education platform — trusted by over 60,000 followers and 2 million monthly learners.
+          Cyberslide is building the most engaging short-form cybersecurity education platform — trusted by over 74,000 followers and 2 million monthly learners.
         </p>
         
         <div className="flex flex-wrap justify-center gap-4 mt-8">
-          <Button className="bg-cyber-purple hover:bg-opacity-90 text-white px-8 py-6 text-lg rounded-md flex items-center gap-2 glow">
+          <Button 
+            className="bg-cyber-purple hover:bg-opacity-90 text-white px-8 py-6 text-lg rounded-md flex items-center gap-2 glow" 
+            onClick={() => window.open('https://instagram.com/cyber.slide', '_blank')}
+          >
             <YoutubeIcon size={20} />
             Watch Our Content
           </Button>
@@ -63,7 +66,11 @@ const HeroSection: React.FC = () => {
             Join Our Waitlist
           </Button>
           
-          <Button variant="outline" className="border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:bg-opacity-10 px-8 py-6 text-lg rounded-md flex items-center gap-2">
+          <Button 
+            variant="outline" 
+            className="border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:bg-opacity-10 px-8 py-6 text-lg rounded-md flex items-center gap-2"
+            onClick={() => window.open('https://pdfhost.io/v/N5EtSpV8M7_HackToTheFuture_-_A_Complete_Ethical_Hacking_Roadmap', '_blank')}
+          >
             <FileText size={20} />
             Get the PDF: Beginner's Ethical Hacking Toolkit
           </Button>
