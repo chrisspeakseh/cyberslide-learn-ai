@@ -156,7 +156,7 @@ const Contact = () => {
                     <MapPin className="text-cyber-cyan mt-1 flex-shrink-0" size={20} />
                     <div>
                       <p className="font-medium">Location</p>
-                      <p className="text-gray-400">United States</p>
+                      <p className="text-gray-400">Singapore</p>
                     </div>
                   </div>
                 </div>
